@@ -16,5 +16,23 @@ public class _Test_9_03 {
 		}
 			
 	}
+	public int search(int a[], int left, int right, int x){
+		left = 0;
+		right = a.length - 1;
+		if(x < a[left] || x > a[right]){
+			return -1;
+		}
+		while(left <= right){
+			int mid = (left + right) >> 1;
+			if(mid == a[mid]){
+				return a[mid];
+			}else if(x < a[mid]){
+				right = mid - 1;
+			}else{
+				left = mid + 1;
+			}
+		}
+		return -1;
+	}
 
 }
