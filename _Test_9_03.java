@@ -16,6 +16,7 @@ public class _Test_9_03 {
 		}
 			
 	}
+	//循环二分查找某个数 注意mid放在循环里面
 	public int search(int a[], int left, int right, int x){
 		left = 0;
 		right = a.length - 1;
