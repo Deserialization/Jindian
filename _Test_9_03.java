@@ -1,34 +1,20 @@
 package cn.it.jindian;
 
 public class _Test_9_03 {
-
+	//äºŒåˆ†é€’å½’æŸ¥æ‰¾æŸä¸ªæ•°
 	public int search(int a[], int left, int right, int x){
-		int mid = (left + right) >> 2;
-		if (x == a[mid]) {
-			return mid;
+		int mid = (left + right) >> 1;
+		if(x < a[left] || x > a[right]){
+			return -1;
 		}
-		if (left > right) {
-			return -1;			
+		if(x < a[mid]){
+			return search(a, left, mid - 1, x);
+		}else if(x > a[mid]){
+			return search(a, mid + 1, right, x);
+		}else{
+			return a[mid];
 		}
-		if (a[left] < a[right]) {
-			//Ç°ÕßÊÇÔÚ×ó°ëÇø£¬ºóÕßÊÇÔÚÓÒ°ëÇø£¬
-			return ((x >= a[left] && x <= a[mid]) ? search(a, left, mid - 1, x) : search(a, left, mid + 1, x));
-		}else if (a[mid] < a[left]) {
-			//Ç°ÕßÊÇÔÚÓÒ°ëÇø£¬ºóÕßÊÇÔÚ×ó°ëÇø
-			return ((x >= a[left] && x <= a[right]) ? search(a, mid + 1, right, x) : search(a, left, mid - 1, x));
-		}else if (a[left] == a[mid]) {//±íÊ¾µÄ¶¼ÊÇÖØ¸´µÄÔªËØ
-			//Õâ¸ö±íÊ¾µÄÊÇÓÒ±ßÔªËØ²»Í¬£¬
-			if (a[mid] != a[right]) {
-				return search(a, mid + 1, right, x);//ËÑË÷ÓÒ±ß				
-			}else{
-				int result = search(a, left, mid - 1, x);
-				return result == -1 ? search(a, mid + 1, right, x) :result;
-			}
-		}
-		return -1;
+			
 	}
 
 }
-
-
-
